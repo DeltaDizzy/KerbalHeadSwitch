@@ -18,7 +18,7 @@ namespace KerbalHeadSwitch
 
         public void Ponify()
         {
-            var pony = PonyConfigs.instance.GetPony(kerbal.name);
+            var pony = HeadConfigs.instance.GetPony(kerbal.name);
             if (pony == null) return;
 
             foreach (var t in component.GetComponentsInChildren<Transform>(true))
@@ -74,12 +74,12 @@ namespace KerbalHeadSwitch
             }
         }
 
-        public GameObject AddModel(string name, PonyPart part)
+        public GameObject AddModel(string name, Head head)
         {
             var obj = new GameObject(name);
             var smr = obj.AddComponent<SkinnedMeshRenderer>();
-            smr.sharedMesh = part.mesh;
-            smr.material = part.material;
+            smr.sharedMesh = head.mesh;
+            smr.material = head.headmaterial;
             smr.bones = new Transform[] { bone };
             obj.transform.parent = component.transform;
             obj.layer = layer;

@@ -11,7 +11,7 @@ namespace KerbalHeadSwitch
 
         public void Start()
         {
-            PonyConfigs.instance = new PonyConfigs();
+            HeadConfigs.instance = new HeadConfigs();
             GameEvents.onKerbalAdded.Add(onKerbalAdd);
             GameEvents.onGameStateCreated.Add(setGame);
             DontDestroyOnLoad(this);
@@ -28,7 +28,7 @@ namespace KerbalHeadSwitch
                 }
                 PartLoader.getPartInfoByName("kerbalEVAfemale").partPrefab.gameObject.AddComponent<EvaModule>();
 
-                PonyConfigs.instance.Load();
+                HeadConfigs.instance.Load();
             }
         }
 
@@ -37,7 +37,7 @@ namespace KerbalHeadSwitch
             if (crew.type != ProtoCrewMember.KerbalType.Applicant) return;
             if (crew.name.GetHashCode() % 3 != 0) return;
 
-            foreach (var name in PonyConfigs.instance.PonyNames)
+            foreach (var name in HeadConfigs.instance.HeadNames)
             {
                 if (!game.CrewRoster.Exists(name))
                 {
@@ -50,7 +50,7 @@ namespace KerbalHeadSwitch
 
         private void PonifyCrewMember(ProtoCrewMember crew)
         {
-            var pony = PonyConfigs.instance.GetPony(crew.name);
+            var pony = HeadConfigs.instance.GetPony(crew.name);
             if (pony == null) return;
 
             crew.gender = pony.gender;
