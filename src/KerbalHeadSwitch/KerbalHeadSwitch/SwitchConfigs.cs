@@ -36,6 +36,8 @@ namespace KerbalHeadSwitch
      */
     public class HeadSwitchConfiguration : MonoBehaviour
     {
+        Dictionary<ProtoCrewMember, string> crew = new Dictionary<ProtoCrewMember, string>();
+
         public HeadSwitchConfiguration Instance
         {
             get
@@ -51,11 +53,12 @@ namespace KerbalHeadSwitch
         private string meshPath = null; //path to mu file
         private string material = null; //idk
 
+
         public void GetNodes()
         {
-            foreach (UrlDir.UrlConfig UrlConfig in GameDatabase.Instance.root.GetConfigs("KERBALHEADSWITCH")) //get KErBALHEADSWITCH nodes
+            foreach (UrlDir.UrlConfig UrlConfig in GameDatabase.Instance.root.GetConfigs("KERBALHEADSWITCH")) //get KERBALHEADSWITCH nodes
             {
-                foreach (ConfigNode node in UrlConfig.config.GetNodes("HEAD")) //get HEAD nodes
+                foreach (ConfigNode node in UrlConfig.config.GetNodes("HEAD")) //get HEAD nodes - Thanks blowfish!
                 {
                     name = node.GetValue("name");
                     kerbal = node.GetValue("kerbal");
@@ -66,14 +69,18 @@ namespace KerbalHeadSwitch
             }
         }
 
-        public void SetGender(string gender)
+        public void SetGender(string gender) //Set gender to parsed string
         {
             ProtoCrewMember.Gender headGender = gender.ToEnum<ProtoCrewMember.Gender>();
         }
 
-        public void SetKerbal(string kerbalName, ProtoCrewMember kerbal)
+        public void SetKerbal(string kerbalName, ProtoCrewMember kerbal) //Set Kerbal name to parsed name, if it exists
         {
-
+            switch (kerbalName)
+            {
+                case: "Jebediah Kerman"
+                        break;
+            }
         }
         
     }
