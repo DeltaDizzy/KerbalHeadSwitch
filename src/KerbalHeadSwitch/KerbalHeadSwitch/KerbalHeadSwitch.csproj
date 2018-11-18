@@ -52,6 +52,7 @@
     <Compile Include="SwitchAddon.cs" />
     <Compile Include="SwitchConfigs.cs" />
     <Compile Include="Switcher.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

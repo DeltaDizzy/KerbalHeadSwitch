@@ -5,6 +5,7 @@ namespace KerbalHeadSwitch
 {
     class Switcher
     {
+        HeadSwitchConfiguration config;
         Component component;
         ProtoCrewMember kerbal;
         Transform bone = null;
@@ -16,9 +17,9 @@ namespace KerbalHeadSwitch
             this.kerbal = kerbal;
         }
 
-        public void Ponify()
+        public void SwitchHead()
         {
-            var pony = HeadConfigs.instance.GetPony(kerbal.name);
+            var pony = config.Instance.GetHead(kerbal.name);
             if (pony == null) return;
 
             foreach (var t in component.GetComponentsInChildren<Transform>(true))
