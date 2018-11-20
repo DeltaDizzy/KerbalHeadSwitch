@@ -48,9 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components.cs" />
+    <Compile Include="Head.cs" />
+    <Compile Include="HeadSwitchConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwitchAddon.cs" />
-    <Compile Include="SwitchConfigs.cs" />
     <Compile Include="Switcher.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

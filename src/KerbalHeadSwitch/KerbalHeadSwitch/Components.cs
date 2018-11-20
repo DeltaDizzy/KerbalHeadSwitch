@@ -9,7 +9,7 @@ namespace KerbalHeadSwitch
         public void Start()
         {
             var kerbal = GetComponent<Kerbal>();
-            new Switcher(kerbal, kerbal.protoCrewMember).Ponify();
+            new Switcher(kerbal, kerbal.protoCrewMember).HeadSwitcher();
             gameObject.AddComponent<VisibilityChecker>();
         }
     }
@@ -23,14 +23,14 @@ namespace KerbalHeadSwitch
             if (!isInitialised)
             {
                 isInitialised = true;
-                new Switcher(part, part.protoModuleCrew[0]).Ponify();
+                new Switcher(part, part.protoModuleCrew[0]).HeadSwitcher();
             }
         }
     }
 
     public class VisibilityChecker : MonoBehaviour
     {
-        private Renderer head, eyes, mane, horn, kerbalHead;
+        private Renderer head, kerbalHead;
 
         public void Start()
         {
@@ -43,17 +43,8 @@ namespace KerbalHeadSwitch
                     case "headMesh":
                         kerbalHead = smr;
                         break;
-                    case "ponyHead":
+                    case "Head":
                         head = smr;
-                        break;
-                    case "ponyEyes":
-                        eyes = smr;
-                        break;
-                    case "mane":
-                        mane = smr;
-                        break;
-                    case "horn":
-                        horn = smr;
                         break;
                 }
             }
@@ -73,9 +64,6 @@ namespace KerbalHeadSwitch
                 }
             }
             if (head) head.enabled = visible;
-            if (eyes) eyes.enabled = visible;
-            if (mane) mane.enabled = visible;
-            if (horn) horn.enabled = visible;
         }
     }
 }
